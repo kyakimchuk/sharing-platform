@@ -1,0 +1,29 @@
+{% extends 'sp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/authorization.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <form id="form-authorization" method="post">
+        {% csrf_token %}
+		<h2>Авторизация</h2>
+        <div class="field">
+            <label for="login">Логин</label>
+            <input id="login" name="login" type="text" value="{% if request.POST.login %}{{ login }}{% endif %}" required />
+        </div>
+        <div class="field">
+            <label for="password">Пароль</label>
+            <input id="password" name="password" type="password" required />
+        </div>
+        <div class="button">
+            <input type="submit" name="button-submit" value="Войти">
+        </div>
+        {% if error %}
+            <div class="errors">{{ error }}</div>
+        {% endif %}
+	</form>
+{% endblock %}

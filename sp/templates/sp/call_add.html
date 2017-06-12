@@ -1,0 +1,21 @@
+{% extends 'sp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Добавление объявления{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/add_call.css' %}" />
+{#    <script src="{% static 'sp/js/add_call.js' %}"></script>#}
+{% endblock %}
+
+{% block content %}
+    <form id="form-add-call" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Добавление объявления</h2>
+        {{ form.as_p }}
+        <div class="button">
+            <input type="submit" name="button-submit" value="Добавить" />
+        </div>
+	</form>
+    <p id="back"><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+{% endblock %}

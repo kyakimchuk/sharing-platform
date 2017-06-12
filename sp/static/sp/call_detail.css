@@ -1,0 +1,10 @@
+h2 {
+    text-align: center;
+}
+#call_name {
+    font-size: larger;
+    font-weight: bold;
+}
+#content {
+    margin: 0 20px 30px 20px;
+}

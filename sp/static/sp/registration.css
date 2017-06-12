@@ -1,0 +1,32 @@
+#form-registration {
+    width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+.field {
+    text-align: right;
+    margin: 10px 0;
+}
+label {
+    float:left;
+}
+.button {
+    clear: both;
+    margin: 20px;
+}
+.errors {
+    color: #ff0000;
+}
+.success {
+    color: #9AE42A;
+}
+input[type=submit] {
+    margin-left: 20px;
+    padding: 5px 15px;
+    background: #333333;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    color: white;
+}

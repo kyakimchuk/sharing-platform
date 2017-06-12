@@ -1,0 +1,46 @@
+/*#form-add-call p:first-of-type {*/
+    /*display: none;*/
+/*}*/
+#form-add-call {
+    width: 460px;
+    margin: 0 auto;
+    text-align: center;
+}
+#form-add-call p {
+    text-align: right;
+    margin: 10px 0;
+}
+label {
+    float:left;
+}
+.button {
+    clear: both;
+    margin: 20px;
+}
+span.helptext {
+    display: block;
+    color: #999999;
+    font-size: smaller;
+}
+p input, select, textarea {
+    width: 340px;
+}
+#back {
+    text-align: center;
+}
+input[type=submit] {
+    margin-left: 20px;
+    padding: 5px 15px;
+    background: #333333;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    color: white;
+}
+label[for="id_type"], label[for="id_city"], label[for="id_name"], label[for="id_description"] {
+    font-weight: bold;
+}
+label[for="id_type"]:after, label[for="id_city"]:after, label[for="id_name"]:after, label[for="id_description"]:after {
+    content: "*";
+}

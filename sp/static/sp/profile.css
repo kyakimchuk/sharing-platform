@@ -1,0 +1,43 @@
+#form-profile {
+    width: 425px;
+    margin: 0 auto;
+    text-align: center;
+}
+#form-profile p {
+    text-align: right;
+    margin: 10px 0;
+}
+label {
+    float:left;
+}
+.button {
+    clear: both;
+    margin: 20px;
+}
+p input, select, textarea {
+    width: 300px;
+}
+#back {
+    text-align: center;
+}
+input[type=submit] {
+    margin-left: 20px;
+    padding: 5px 15px;
+    background: #333333;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    color: white;
+}
+label[for="id_e_mail"] {
+    font-weight: bold;
+}
+label[for="id_e_mail"]:after {
+    content: "*";
+}
+span.helptext {
+    display: block;
+    color: #999999;
+    font-size: smaller;
+}

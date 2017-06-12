@@ -1,0 +1,21 @@
+{% extends 'sp/base.html' %}
+
+{% block title %}Успех{% endblock %}
+
+{% block link %}
+    <style>
+        p.mes {
+            text-align: center;
+            font-size: 30px;
+            color: #9AE42A;
+        }
+        p {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <p class='mes'>Данные сохранены успешно!</p>
+    <p><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+{% endblock %}

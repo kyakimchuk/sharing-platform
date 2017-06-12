@@ -1,0 +1,73 @@
+h2 {
+    text-align: center;
+}
+#search-form {
+    margin: 0 10px 0 10px;
+    border: 1px solid #E7E7E7;
+    padding: 20px;
+}
+#id_sort {
+    margin-top: 20px;
+}
+p.mes {
+    text-align: center;
+    font-size: 17px;
+}
+table {
+    border-collapse: collapse;
+}
+tr {
+    height: 136px;
+    border-bottom: 1px solid #E7E7E7;
+}
+td {
+    /*border: 1px solid #696969;*/
+    padding: 5px;
+}
+td.card {
+    text-align: center;
+    width: 159px;
+}
+.card img {
+    max-width: 149px;
+    max-height: 124px;
+    /*vertical-align: middle;*/
+}
+.main-info {
+    width: 800px;
+}
+.description {
+    width: 796px;
+    text-align: left;
+    overflow: hidden;
+}
+.tags {
+    width: 796px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pagination {
+    text-align: right;
+    margin: 10px 50px 10px 0;
+    font-size: x-large;
+}
+.pagination a {
+    text-decoration: none;
+}
+.bottom {
+    margin: 10px 50px 30px 0;
+}
+.num_pages {
+    font-size: small;
+}
+input[type=submit] {
+    margin-left: 20px;
+    padding: 5px 15px;
+    background: #333333;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    color: white;
+}

@@ -1,0 +1,22 @@
+{% extends 'sp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Мой профиль{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <form id="form-profile" method="post">
+        {% csrf_token %}
+        <h2>Мой профиль</h2>
+        <div id="form">
+            {{ form.as_p }}
+        </div>
+        <div class="button">
+            <input type="submit" name="button-submit" value="Сохранить" />
+        </div>
+	</form>
+    <p id="back"><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+{% endblock %}

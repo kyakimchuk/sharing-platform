@@ -1,0 +1,44 @@
+{% extends 'sp/base.html' %}
+
+
+
+{% block pagination %}
+    <div class="pagination">
+
+            {% if call_list.has_previous %}
+                <a href="?type={{ request.GET.type }}&city={{ request.GET.city }}&tags={{ request.GET.tags }}&name={{ request.GET.name }}&description={{ request.GET.description }}&sort={{ request.GET.sort }}&page={{ call_list.previous_page_number }}">←</a>
+            {% endif %}
+            {% for num in call_list.paginator.page_range %}
+                {% if num == call_list.number %}
+                    <span class="current">
+                        <b>{{ num }}</b><span class="num_pages"> из {{ call_list.paginator.num_pages }}</span>
+                    </span>
+                {% else %}
+                    <a href="?type={{ request.GET.type }}&city={{ request.GET.city }}&tags={{ request.GET.tags }}&name={{ request.GET.name }}&description={{ request.GET.description }}&sort={{ request.GET.sort }}&page={{ num }}"> {{ num }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if call_list.has_next %}
+                <a href="?type={{ request.GET.type }}&city={{ request.GET.city }}&tags={{ request.GET.tags }}&name={{ request.GET.name }}&description={{ request.GET.description }}&sort={{ request.GET.sort }}&page={{ call_list.next_page_number }}">→</a>
+            {% endif %}
+    </div>
+{% endblock %}
+
+{% block pagination-bottom %}
+    <div class="pagination bottom">
+            {% if call_list.has_previous %}
+                <a href="?type={{ request.GET.type }}&city={{ request.GET.city }}&tags={{ request.GET.tags }}&name={{ request.GET.name }}&description={{ request.GET.description }}&sort={{ request.GET.sort }}&page={{ call_list.previous_page_number }}">←</a>
+            {% endif %}
+            {% for num in call_list.paginator.page_range %}
+                {% if num == call_list.number %}
+                    <span class="current">
+                        <b>{{ num }}</b><span class="num_pages"> из {{ call_list.paginator.num_pages }}</span>
+                    </span>
+                {% else %}
+                    <a href="?type={{ request.GET.type }}&city={{ request.GET.city }}&tags={{ request.GET.tags }}&name={{ request.GET.name }}&description={{ request.GET.description }}&sort={{ request.GET.sort }}&page={{ num }}"> {{ num }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if call_list.has_next %}
+                <a href="?type={{ request.GET.type }}&city={{ request.GET.city }}&tags={{ request.GET.tags }}&name={{ request.GET.name }}&description={{ request.GET.description }}&sort={{ request.GET.sort }}&page={{ call_list.next_page_number }}">→</a>
+            {% endif %}
+    </div>
+{% endblock %}

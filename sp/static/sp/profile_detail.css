@@ -1,0 +1,21 @@
+h2 {
+    text-align: center;
+}
+#content {
+    margin: 0 20px 30px 20px;
+}
+.information-category {
+    width: 1200px;
+    border: 1px solid #E7E7E7;
+    padding: 5px;
+    margin: 10px 0;
+}
+.field_name {
+    font-weight: bold;
+}
+.empty {
+    font-size: smaller;
+}
+#contacts p {
+    padding: 0 0 0 20px;
+}

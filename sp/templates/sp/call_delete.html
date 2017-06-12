@@ -1,0 +1,26 @@
+{% extends 'sp/base.html' %}
+
+{% block title %}Удаление объявления{% endblock %}
+
+{% block link %}
+    <style>
+        #form-delete-call {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <form id="form-delete-call" method="post">
+        {% csrf_token %}
+        <h2>Удаление объявления</h2>
+         <p>Вы уверенны, что хотите удалить "{{ object }}"?</p>
+        <div class="button">
+            <input type="submit" value="Удалить" />
+        </div>
+	</form>
+    <p><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+{% endblock %}

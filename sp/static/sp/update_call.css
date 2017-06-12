@@ -1,0 +1,46 @@
+#form-update-call {
+    width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+th {
+    width:110px;
+    text-align: left;
+    font-weight: normal;
+}
+td {
+    width:350px;
+    padding: 5px;
+}
+.button {
+    margin: 20px;
+}
+span.helptext {
+    color: #999999;
+    font-size: smaller;
+}
+table input:not([id="card-clear_id"]), select, textarea {
+    width: 350px;
+}
+#id_card {
+    margin-top: 5px;
+}
+#back {
+    text-align: center;
+}
+input[type=submit] {
+    margin-left: 20px;
+    padding: 5px 15px;
+    background: #333333;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    color: white;
+}
+label[for="id_type"], label[for="id_city"], label[for="id_name"], label[for="id_description"] {
+    font-weight: bold;
+}
+label[for="id_type"]:after, label[for="id_city"]:after, label[for="id_name"]:after, label[for="id_description"]:after {
+    content: "*";
+}

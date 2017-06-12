@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/style.css' %}" />
+    {% block link %}{% endblock %}
+</head>
+<body id="id-body">
+    <div class="header">
+        <ul>
+            <li><a href="{% url 'home' %}">Список объявлений (Главная)</a></li>
+            <li><a href="{% url 'registration' %}">Регистрация</a></li>
+            <li><a href="{% url 'authorization' %}">Авторизация</a></li>
+            <li><a href="{% url 'add_call' %}">Добавить объявление</a></li>
+            <li><a href="{% url 'my_profile' %}">Мой профиль</a></li>
+            <li><a href="{% url 'my_calls' %}">Мои объявления</a></li>
+            {% if user.is_authenticated %}
+                <li class="user_auth"><a href="{% url 'logout_view' %}">Выйти</a></li>
+                <span class="user_auth">Вы вошли как {{ user.username }}</span>
+            {% else %}
+                <li class="user_auth"><a href="{% url 'authorization' %}">Авторизация</a></li>
+                <span class="user_auth">Вы не вошли в систему</span>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="page-content">
+        {% block search %}{% endblock %}
+        {% block pagination %}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block pagination-bottom %}{% endblock %}
+    </div>
+</body>
+</html>

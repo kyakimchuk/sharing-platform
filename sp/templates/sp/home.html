@@ -1,0 +1,79 @@
+{% extends 'sp/pagination.html' %}
+{% load staticfiles %}
+
+{% block title %}Главная{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/home.css' %}" />
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+    <script src="{% static 'sp/js/home.js' %}"></script>
+{% endblock %}
+
+{% block search %}
+    <h2>Список объявлений</h2>
+    <form method="GET" id="search-form">
+        {% csrf_token %}
+        <label for="id_type">Тип:</label>
+        <select id="id_type" name="type">
+            <option value="">Все</option>
+            <option value="offer" {% if request.GET.type == 'offer'%} selected {% endif %}>Предложение</option>
+            <option value="search" {% if request.GET.type == 'search'%} selected {% endif %}>Поиск</option>
+        </select>
+        <label for="id_city">Город:</label>
+	    <input id="id_city" maxlength="30" name="city" type="text" value="{{ request.GET.city }}">
+        <label for="id_tags">Ключевые слова:</label>
+	    <input id="id_tags" name="tags" type="text" value="{{ request.GET.tags }}">
+        <label for="id_name">В названии:</label>
+	    <input id="id_name" maxlength="30" name="name" type="text" value="{{ request.GET.name }}">
+        <label for="id_description">В описании:</label>
+        <input id="id_description" maxlength="100" name="description" type="text" value="{{ request.GET.description }}">
+        <br>
+        <label for="id_sort">Сортировать по:</label>
+        <select id="id_sort" name="sort">
+            <option value="">Не сортировать</option>
+            <option value="users" {% if request.GET.sort == 'users'%} selected {% endif %}>Пользователям</option>
+            <option value="new" {% if request.GET.sort == 'new'%} selected {% endif %}>От самых новых</option>
+            <option value="have-card" {% if request.GET.sort == 'have-card'%} selected {% endif %}>Сначала с фото</option>
+        </select>
+        <input id="button-submit" type="submit" value="Поиск">
+    </form>
+{% endblock %}
+
+{% block content %}
+    {% if call_list|length == 0 %}
+        <p class='mes'>Объявлений нет</p>
+    {% endif %}
+    <table>
+        {% for call in call_list %}
+            <tr>
+                <td class="card">
+                    <a href="{% url 'call_detail' pk=call.id %}">
+                        {% if call.card %}
+                            <img src="{{ call.card.url }}" alt="{{ call.name }}">
+                        {% else %}
+                            <img src="/media/sp/cards/no.png" alt="Нет изображения">
+                        {% endif %}
+                    </a>
+                </td>
+                <td class="main-info">
+                    <p><a href="{% url 'call_detail' pk=call.id %}">{{ call.name }}</a></p>
+                    <p class="description">{{ call.description }}</p>
+                    <p class="tags">{{ call.tags.names|join:'; ' }}</p>
+                </td>
+                <td class="city-date_time">
+                    {{ call.city }} <br/>
+                    {{ call.date_time|date:'d.m.Y, H:i' }}
+                </td>
+                <td class="type-user">
+                    {% if call.type %}
+                        Предложение
+                    {% else %}
+                        Поиск
+                    {% endif %}
+                    от:
+                    <a href="{% url 'profile_detail' pk=call.user_id.profile.id %}">{{ call.user_id }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'sp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Объявление{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/call_detail.css' %}" />
+    <script src="{% static 'sp/js/call_detail.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h2>Просмотр объявления</h2>
+    <div id="content">
+        <p>
+            <span id="call_name">{{ call.name }}</span>
+            {% if call.type %}
+                (Предложение)
+            {% else %}
+                (Поиск)
+            {% endif %}
+        </p>
+        <p>
+            Ключевые слова: {{ call.tags.names|join:'; ' }}
+        </p>
+        <p>Создано: {{ call.date_time|date:'d.m.Y, H:i' }}</p>
+        <p class="card">
+        {% if call.card %}
+            <img src="{{ call.card.url }}" alt="{{ call.name }}">
+        {% else %}
+            <img src="/media/sp/cards/no.png" alt="Нет изображения">
+        {% endif %}
+        </p>
+        <p>От: <a href="{% url 'profile_detail' pk=call.user_id.profile.id %}">{{ call.user_id }}</a></p>
+        <p>Город: {{ call.city }}</p>
+        <p>{{ call.description }}</p>
+        <p id="back"><a href="{% url 'user_calls' user_id=call.user_id_id %}">Все объявления пользователя {{ call.user_id }}</a></p>
+        <p id="back"><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+    </div>
+{% endblock %}

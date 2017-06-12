@@ -1,0 +1,88 @@
+{% extends 'sp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/profile_detail.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h2>Профиль пользователя {{ profile.user_id }}</h2>
+    <div id="content">
+        <div class="information-category">
+            <p><span class="field_name">Имя:</span>
+                {% if profile.name %}
+                    {{ profile.name }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+            <p><span class="field_name">Фамилия:</span>
+                {% if profile.surname %}
+                    {{ profile.surname }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+            <p><span class="field_name">Пол:</span>
+                {% if profile.gender %}
+                    {{ profile.gender }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+            <p><span class="field_name">Возраст:</span>
+                {% if age %}
+                    {{ age }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+            <p><span class="field_name">Образование:</span>
+                {% if profile.education %}
+                    {{ profile.education }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+            <p><span class="field_name">Город:</span>
+                {% if profile.city %}
+                    {{ profile.city }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+        </div>
+        <div class="information-category">
+            <p><span class="field_name">Предложения:</span>
+                {% if profile.offers %}
+                    {{ profile.offers }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+            <p><span class="field_name">Поиск:</span>
+                {% if profile.search %}
+                    {{ profile.search }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+        </div>
+        <div class="information-category" id="contacts">
+            <span class="field_name">Контакты:</span>
+            <p>E_mail: {{ profile.e_mail }}
+            </p>
+            <p>Другие контакты:
+                {% if profile.contacts %}
+                    {{ profile.contacts }}
+                {% else %}
+                    <span class="empty">Не указано</span>
+                {% endif %}
+            </p>
+        </div>
+        <p><a href="{% url 'user_calls' user_id=profile.user_id_id %}">Все объявления пользователя</a></p>
+        <p id="back"><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+    </div>
+{% endblock %}

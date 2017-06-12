@@ -1,0 +1,22 @@
+{% extends 'sp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Редактирование объявления{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sp/update_call.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <form id="form-update-call" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Редактирование объявления</h2>
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div class="button">
+            <input type="submit" name="button-submit" value="Сохранить" />
+        </div>
+	</form>
+    <p id="back"><a href="{{ request.META.HTTP_REFERER }}">Вернуться на предыдущую страницу</a></p>
+{% endblock %}
